@@ -397,34 +397,40 @@ Observations:
 
 ## 18. Reproducibility / Setup Instructions
 
-Requirements (`requirements.txt`): `pandas`, `numpy`, `scikit-learn`,
-`matplotlib`, `seaborn`, `xgboost`, `pyyaml`, `jupyter`.
+The project requires Python 3.x and the dependencies listed in
+`requirements.txt`.
 
 ```bash
-# 1. Create and activate a virtual environment (project ships one at .venv)
-python -m venv .venv
-.venv\Scripts\activate            # Windows (source .venv/bin/activate on Unix)
+# 1. Clone the repository and enter the project directory
 
-# 2. Install dependencies
+# 2. Create and activate a virtual environment
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# Linux/macOS
+# source .venv/bin/activate
+
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 3. (Optional) Regenerate the synthetic dataset -> data/raw/synthetic_telemetry.csv
+# 4. Generate the synthetic dataset
 python -m src.data_generation
 
-# 4. Reproduce the ML pipeline (in order)
-python -m src.run_baseline_training     # baseline models + validation comparison
-python -m src.run_svm_training          # baseline SVM + comparison update
-python -m src.run_cv_analysis           # 5-fold cross-validation
-python -m src.run_hyperparameter_tuning # GridSearchCV tuning, saves tuned models
-python -m src.run_final_test_evaluation # final held-out test evaluation
+# 5. Reproduce the ML pipeline in order
+python -m src.run_baseline_training
+python -m src.run_svm_training
+python -m src.run_cv_analysis
+python -m src.run_hyperparameter_tuning
+python -m src.run_final_test_evaluation
 
-# 5. Demos
-python -m src.demo                  # inference -> adaptation on training samples
-python -m src.simulation_demo       # telemetry -> prediction -> strategy -> simulation
+# 6. Run the demonstrations
+python -m src.demo
+python -m src.simulation_demo
 ```
 
-All randomness is controlled by `config.yaml` (`random_seed: 42`) and fixed
-`random_state=42` in the run scripts, so the reported numbers are reproducible.
+**The project uses a fixed random seed (`42`) for reproducibility. Re-running the pipeline with the same software environment and configuration should reproduce the reported results, subject to library/version differences.**
 
 ## 19. Project Structure
 
