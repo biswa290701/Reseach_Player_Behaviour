@@ -1,0 +1,58 @@
+# ---------------------------------------------------------------------------
+# Python machine-learning project .gitignore
+# ---------------------------------------------------------------------------
+
+# --- Virtual environment ----------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# --- Python caches and compiled files ----------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+
+# --- Jupyter notebook checkpoints --------------------------------------------
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*_checkpoints/
+
+# --- Generated data ----------------------------------------------------------
+data/raw/
+data/processed/
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# --- Trained models and generated results under models/ ----------------------
+models/*.joblib
+models/*.csv
+
+# --- Generated figures --------------------------------------------------------
+reports/figures/
+
+# --- Build / distribution artifacts ------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+*.whl
+*.tar.gz
+
+# --- Local environment / config secrets --------------------------------------
+.env
+.env.*
+!.env.example
+*.local
+
+# --- IDE / editor files --------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
